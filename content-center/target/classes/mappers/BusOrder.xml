@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yf.cn.mapper.BusOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yf.cn.entity.BusOrder">
+        <id column="id" property="id" />
+        <result column="order_code" property="orderCode" />
+        <result column="user_id" property="userId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, order_code, user_id
+    </sql>
+
+    <select id="getOrderList" resultMap="OrderListMapping">
+      /*通过=进行表之间的关联进行多表连接查询*/
+      SELECT
+          bo.id as order_id,
+          bo.order_code,
+          bod.product_name,
+          bod.product_spec,
+          bod.product_price,
+          su.user_name
+        FROM
+          bus_order bo,
+          sys_user su,
+          bus_order_details bod
+          <where>
+              bo.user_id = su.id
+              AND bo.id = bod.order_id and
+              ${ew.sqlSegment}
+          </where>
+    </select>
+
+    <!--通过左外连接进行多表分页查询 -->
+
+    <select id="getOrderListForJoin" resultMap="OrderListMapping">
+        SELECT
+          bo.id AS order_id,
+          bo.order_code,
+          bod.product_name,
+          bod.product_spec,
+          bod.product_price,
+          su.user_name
+        FROM
+          bus_order bo
+          LEFT JOIN sys_user su ON bo.user_id = su.id
+          LEFT JOIN bus_order_details bod ON bo.id = bod.order_id
+          ${ew.customSqlSegment}
+
+    </select>
+    
+    <resultMap id="OrderListMapping" type="com.yf.cn.dto.OrderDto">
+        <id column="order_id" property="id" javaType="int"/>
+        <!-- result属性映射非主键字段 -->
+        <result column="order_code" property="orderCode" javaType="String"/>
+        <result column="product_name" property="productName"/>
+        <result column="product_spec" property="productSpec" javaType="String"/>
+        <result column="product_price" property="productPrice" javaType="java.math.BigDecimal"/>
+        <result column="user_name" property="userName" javaType="String"/>
+    </resultMap>
+
+</mapper>
