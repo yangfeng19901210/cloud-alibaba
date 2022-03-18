@@ -1,14 +1,14 @@
 server:
-  port: 8011
+  port: 8012
 spring:
   application:
-    name: server-01
+    name: @project.artifactId@
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
   datasource:
-    url: jdbc:mysql://localhost:3308/yyds?nullCatalogMeansCurrent=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3308/content-center?nullCatalogMeansCurrent=true&serverTimezone=UTC
     hikari:
       username: root
       password: root

@@ -13,9 +13,8 @@
     <sql id="Base_Column_List">
         id, order_code, user_id
     </sql>
-
+    <!--通过=进行表之间的关联进行多表连接查询 -->
     <select id="getOrderList" resultMap="OrderListMapping">
-      /*通过=进行表之间的关联进行多表连接查询*/
       SELECT
           bo.id as order_id,
           bo.order_code,

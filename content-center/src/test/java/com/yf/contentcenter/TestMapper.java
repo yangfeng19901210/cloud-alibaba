@@ -44,63 +44,63 @@ public class TestMapper {
 
      @Resource
      private BusOrderDetailsMapper busOrderDetailsMapper;
-     @Test
-     public void getById(){
-          RunoobTbl runoobTbl = runoobTblMapper.selectById(1);
-          log.info("查询到信息 {}"+runoobTbl );
-     }
+//     @Test
+//     public void getById(){
+//          RunoobTbl runoobTbl = runoobTblMapper.selectById(1);
+//          log.info("查询到信息 {}"+runoobTbl );
+//     }
+//
+//     @Test
+//     public void testSave(){
+//          RunoobTbl runoobTbl = RunoobTbl.builder().runoobAuthor("金庸").runoobTitle("天龙八部").submissionDate(new Date()).build();
+//          runoobTblMapper.insert(runoobTbl);
+//     }
 
-     @Test
-     public void testSave(){
-          RunoobTbl runoobTbl = RunoobTbl.builder().runoobAuthor("金庸").runoobTitle("天龙八部").submissionDate(new Date()).build();
-          runoobTblMapper.insert(runoobTbl);
-     }
-
-     @Test
-     public void selectPage(){
-          //构建Page对象
-          Page<RunoobTbl> page = new Page<RunoobTbl>(1,3);
-
-          //构建条件查询队形
-          QueryWrapper<RunoobTbl> query = new QueryWrapper<RunoobTbl>();
-          //query.eq("runoob_title","笑傲江湖");
-          query.like("runoob_title","侠客");
-          IPage<RunoobTbl> runoobTblIPage = runoobTblMapper.selectPage(page, query);
-          List<RunoobTbl> records = runoobTblIPage.getRecords();
-          log.info("获取到分页数据 {}"+records);
-     }
-
-     //测试新增用户数据
-     @Test
-     public void testSaveUser(){
-          sysUserMapper.insert(SysUser.builder().userName("李四").build());
-
-     }
-
-     @Test
-     public void testSaveOrder(){
-          BusOrder busOrder = BusOrder.builder().userId(3).orderCode(String.valueOf(System.currentTimeMillis())).build();
-          busOrderMapper.insert(busOrder);
-          busOrderDetailsMapper.insert(BusOrderDetails.builder().productName("干吃面").productSpec("小型包装").productPrice(new BigDecimal("12.00")).orderId(busOrder.getId()).build());
-     }
-
-     @Test
-     public void testSelectPage(){
-          Page<OrderDto> page = new Page<OrderDto>(1,3);
-          QueryWrapper<OrderDto> queryWrapper = new QueryWrapper<OrderDto>();
-          queryWrapper.eq("bo.user_id",2).like("bod.product_name","吃面");
-          Page<OrderDto> orderList = busOrderMapper.getOrderList(page, queryWrapper);
-          System.out.println(orderList.getRecords());
-     }
-
-     @Test
-     public void testSelectPageForJoin(){
-          Page<OrderDto> page = new Page<OrderDto>(1,3);
-          QueryWrapper<OrderDto> queryWrapper = new QueryWrapper<OrderDto>();
-          queryWrapper.eq("bo.user_id",2).like("bod.product_name","吃面");
-          Page<OrderDto> orderList = busOrderMapper.getOrderListForJoin(page, queryWrapper);
-          System.out.println(orderList.getRecords());
-     }
+//     @Test
+//     public void selectPage(){
+//          //构建Page对象
+//          Page<RunoobTbl> page = new Page<RunoobTbl>(1,3);
+//
+//          //构建条件查询队形
+//          QueryWrapper<RunoobTbl> query = new QueryWrapper<RunoobTbl>();
+//          //query.eq("runoob_title","笑傲江湖");
+//          query.like("runoob_title","侠客");
+//          IPage<RunoobTbl> runoobTblIPage = runoobTblMapper.selectPage(page, query);
+//          List<RunoobTbl> records = runoobTblIPage.getRecords();
+//          log.info("获取到分页数据 {}"+records);
+//     }
+//
+//     //测试新增用户数据
+//     @Test
+//     public void testSaveUser(){
+//          sysUserMapper.insert(SysUser.builder().userName("李四").build());
+//
+//     }
+//
+//     @Test
+//     public void testSaveOrder(){
+//          BusOrder busOrder = BusOrder.builder().userId(3).orderCode(String.valueOf(System.currentTimeMillis())).build();
+//          busOrderMapper.insert(busOrder);
+//          busOrderDetailsMapper.insert(BusOrderDetails.builder().productName("干吃面").productSpec("小型包装").productPrice(new BigDecimal("12.00")).orderId(busOrder.getId()).build());
+//     }
+//
+//     @Test
+//     public void testSelectPage(){
+//          Page<OrderDto> page = new Page<OrderDto>(1,3);
+//          QueryWrapper<OrderDto> queryWrapper = new QueryWrapper<OrderDto>();
+//          queryWrapper.eq("bo.user_id",2).like("bod.product_name","吃面");
+//          Page<OrderDto> orderList = busOrderMapper.getOrderList(page, queryWrapper);
+//          System.out.println(orderList.getRecords());
+//     }
+//
+//     @Test
+//     public void testSelectPageForJoin(){
+//          Page<OrderDto> page = new Page<OrderDto>(1,3);
+//          QueryWrapper<OrderDto> queryWrapper = new QueryWrapper<OrderDto>();
+//          queryWrapper.eq("bo.user_id",2).like("bod.product_name","吃面");
+//          Page<OrderDto> orderList = busOrderMapper.getOrderListForJoin(page, queryWrapper);
+//          System.out.println(orderList.getRecords());
+//     }
 
 
 
