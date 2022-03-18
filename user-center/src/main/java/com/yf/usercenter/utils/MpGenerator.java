@@ -26,7 +26,7 @@ public class MpGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("D:/ttys/server-01/src/main/java");  //修改成自己的项目路径一直到java
+        gc.setOutputDir("D:/ttys/user-center/src/main/java");  //修改成自己的项目路径一直到java
         gc.setFileOverride(true);//覆盖已有文件
         gc.setOpen(false);
         gc.setBaseResultMap(true);
@@ -52,7 +52,7 @@ public class MpGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.yf.cn");
+        pc.setParent("com.yf.usercenter");
         //pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
@@ -76,7 +76,7 @@ public class MpGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输入文件名称
-                return "D:/ttys/server-01/src/main/resources" + "/mappers/" + tableInfo.getEntityName() + StringPool.DOT_XML;
+                return "D:/ttys/user-center/src/main/resources" + "/mappers/" + tableInfo.getEntityName() + StringPool.DOT_XML;
             }
         });
         cfg.setFileOutConfigList(focList);
@@ -93,7 +93,7 @@ public class MpGenerator {
         //strategy.setExclude(new String[]{rb.getString("tableName")});
 
         //建立包含哪些表空 为所有表
-        strategy.setInclude("sys_user","bus_order","bus_order_details");
+        strategy.setInclude("user");
         mpg.setStrategy(strategy);
         //mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.setTemplateEngine(new VelocityTemplateEngine());
