@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yf.cn.mapper.RunoobTblMapper">
+<mapper namespace="com.yf.usercenter.mapper.RunoobTblMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.yf.cn.entity.RunoobTbl">
+    <resultMap id="BaseResultMap" type="com.yf.usercenter.entity.RunoobTbl">
         <id column="runoob_id" property="runoobId" />
         <result column="runoob_title" property="runoobTitle" />
         <result column="runoob_author" property="runoobAuthor" />

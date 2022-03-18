@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yf.cn.mapper.BusOrderMapper">
+<mapper namespace="com.yf.usercenter.mapper.BusOrderMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.yf.cn.entity.BusOrder">
+    <resultMap id="BaseResultMap" type="com.yf.usercenter.entity.BusOrder">
         <id column="id" property="id" />
         <result column="order_code" property="orderCode" />
         <result column="user_id" property="userId" />
@@ -52,7 +52,7 @@
 
     </select>
     
-    <resultMap id="OrderListMapping" type="com.yf.cn.dto.OrderDto">
+    <resultMap id="OrderListMapping" type="com.yf.usercenter.dto.OrderDto">
         <id column="order_id" property="id" javaType="int"/>
         <!-- result属性映射非主键字段 -->
         <result column="order_code" property="orderCode" javaType="String"/>

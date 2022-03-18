@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan("com.yf.cn.mapper")
+@MapperScan("com.yf.contentcenter.mapper")
 public class ContentCenterApplication {
 
   public static void main(String[] args) {

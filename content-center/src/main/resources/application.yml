@@ -21,7 +21,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #s设置控制台打印sql语句
     cache-enabled: false
     call-setters-on-nulls: true
-  type-aliases-package: com.yf.cn.entity  #配置包别名，不同的包别名之间用，分开
+  type-aliases-package: com.yf.contentcenter.entity  #配置包别名，不同的包别名之间用，分开
   global-config:
     db-config:
       logic-delete-value: 0
