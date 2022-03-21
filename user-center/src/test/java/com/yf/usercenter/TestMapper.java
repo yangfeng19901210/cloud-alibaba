@@ -8,13 +8,16 @@ import com.yf.usercenter.entity.BusOrder;
 import com.yf.usercenter.entity.BusOrderDetails;
 import com.yf.usercenter.entity.RunoobTbl;
 import com.yf.usercenter.entity.SysUser;
+import com.yf.usercenter.entity.User;
 import com.yf.usercenter.mapper.BusOrderDetailsMapper;
 import com.yf.usercenter.mapper.BusOrderMapper;
 import com.yf.usercenter.mapper.RunoobTblMapper;
 import com.yf.usercenter.mapper.SysUserMapper;
+import com.yf.usercenter.mapper.UserMapper;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -44,6 +47,9 @@ public class TestMapper {
 
      @Resource
      private BusOrderDetailsMapper busOrderDetailsMapper;
+
+     @Resource
+     private UserMapper userMapper;
      @Test
      public void getById(){
           RunoobTbl runoobTbl = runoobTblMapper.selectById(1);
@@ -104,6 +110,25 @@ public class TestMapper {
 
 
 
+     //测试数据库更新时间是否生效
+     @Test
+     public void testUpdateTime(){
+          //1.查询规定的id对应的user数据
+          User user = userMapper.selectById(5);
+          log.info("修改前的信息为{}"+user);
 
+          //2.修改维西尼昵称，进行数据更新
+          user.setWxNickname("比例即使");
+          userMapper.updateById(user);
+
+          log.info("修改后的信息为{}"+user);
+
+     }
+     @Test
+     public void testThreadLocalRandom(){
+          //返回0-110之间的随机数，包括0但不包含110
+          int i = ThreadLocalRandom.current().nextInt(110);
+          System.out.println(i);
+     }
 
 }
