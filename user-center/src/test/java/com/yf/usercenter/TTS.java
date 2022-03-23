@@ -12,3 +12,18 @@ public class TTS {
   }
 
 }
+
+class TTYM{
+
+  public static void main(String[] args) {
+
+  }
+
+}
+
+class TTYS{
+
+  public static void main(String[] args) {
+
+  }
+}
